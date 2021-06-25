@@ -1,0 +1,13 @@
+
+#<IfModule mod_rewrite.c>
+# 開啟 Apache Web Server 目錄轉向功能
+RewriteEngine On
+
+# 網址請求路徑如果存在真實檔名或目錄，就可以直接使用
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# 如果網址查看的檔案或目錄不存在，則重定向所有請求到 index.php
+RewriteRule ^(.*)$ index.php?url=$1 [PT,L]
+
+#</IfModule mod_rewrite.c>
